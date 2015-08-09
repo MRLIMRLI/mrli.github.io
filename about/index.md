@@ -4,29 +4,16 @@ title: About Mr.li
 image:
   feature: abstract-5.jpg
 comments: false
-modified: 2014-12-24
+modified: 2015-08-09
+share: false
 ---
 
-They say three times the charm, so here is another free responsive Jekyll blog theme for you. I've learned a ton since open sourcing my first two themes [on Github](http://github.com/mmistakes), and wanted to try a few new things this time around. 
+* 有不少人说我是一个文艺的人，其实我也不知道自己是一个怎样的人，我渴望简单、自由、随性的生活，即使生活可能会给你一记响亮的耳光，我依然坚持简单、自由。不喜欢跟太功利的人说话，也不屑于惺惺作态的表面附和，最好的是，我真心对你，你真心待我。
 
-If you've used any of [my other themes](http://mademistakes.com/work/jekyll-themes/) most of this should be familiar territory...
+* 从小到大，心中一直有种表演的情愫，这也是做这个博客的原因。但有了博客也不一定能表达出自己心中所想，能够将所想通过文字或者语言清楚地表达出来的人是我佩服的。我的文笔很烂，以后尽量多读书。
 
-## What HPSTR brings to the table:
+* 我喜欢编程，在进入大学前我并不知道自己会喜欢它，或许跟我的性格有关。（可能在中国式的教育下，知道自己到底想要什么、想干什么的确很难）当把想法通过代码成为现实，最后变成与人们息息相关的东西，是一件多么快乐的事情。所以，即使以后可能由于种种客观原因我不再从事这个行业，编程也会是我的爱好。
 
-* Responsive templates for post, page, and post index `_layouts`. Looks great on mobile, tablet, and desktop devices.
-* Gracefully degrads in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.  
-* Modern and minimal design.
-* Sweet animated menu.
-* Background image support.
-* Readable typography to make your words shine.
-* Support for large images to call out your favorite posts.
-* Built-in support for Sass courtesy of Jekyll 2.x.
-* Optional [Disqus](http://disqus.com) comments.
-* Simple and clear permalink structure[^1].
-* [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) support for a better social sharing experience.
-* Simple [custom 404 page]({{ site.url }}/404.html) to get you started.
-* Stylesheets for Pygments and Coderay [syntax highlighting]({{ site.url }}/code-highlighting-post/) to make your code examples look snazzy.
+* 最后，感谢我的父母，你们尽最大努力给了我最好的，让我健康成长，谢谢你们！
 
-<div markdown="0"><a href="{{ site.url }}/theme-setup/" class="btn btn-info">Theme Setup</a> <a href="https://github.com/mmistakes/hpstr-jekyll-theme" class="btn btn-success">Download HPSTR</a></div>
-
-[^1]: Example: *domain.com/category-name/post-title*
+  （为获得更好的浏览体验，建议使用Chrome、firefox、safari访问本站）

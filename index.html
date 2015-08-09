@@ -1,6 +1,7 @@
 ---
 layout: post-index
-title: All Posts
+title: Latest Posts
+keywords: 黎先生，Mr.li，黎先生的博客，Mr.li's Blog，博客
 description: "爱生活，爱代码，爱民谣，爱自由，也爱美女，为自己喜欢的一切努力着。"
 comments: false
 image:
@@ -10,11 +11,6 @@ image:
 {% for post in paginator.posts %}
 <article class="hentry">
   <header>
-    {% if post.image.feature %}
-      <div class="entry-image-index">
-        <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}"><img src="{{ site.url }}/images/{{ post.image.feature }}" alt="{{ post.title }}"></a>
-      </div><!-- /.entry-image -->
-    {% endif %}
     <div class="entry-meta">
       <span class="entry-date date published updated"><time datetime="{{ post.date | date_to_xmlschema }}"><a href="{{ site.url }}{{ post.url }}">{{ post.date | date: "%B %d, %Y" }}</a></time></span><span class="author vcard"><span class="fn"><a href="{{ site.url }}/about/" title="About {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
       {% if site.reading_time %}
