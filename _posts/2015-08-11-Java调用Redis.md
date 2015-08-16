@@ -5,7 +5,7 @@ description: "在Java中调用Redis详解"
 modified: 2015-08-11
 share: false
 comments: true
-tags: [Java, Redis]
+tags: [Java、Redis]
 image:
   feature: abstract-3.jpg
 ---

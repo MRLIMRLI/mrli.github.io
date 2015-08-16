@@ -4,6 +4,7 @@ title: Java中getBytes()详解
 description: "Java中getBytes()详解"
 modified: 2015-08-09
 share: false
+comments: true
 tags: [Java]
 image:
   feature: abstract-3.jpg

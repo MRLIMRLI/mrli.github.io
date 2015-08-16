@@ -4,6 +4,7 @@ title: Mac OS上安装配置MongoDB
 description: "在Mac OS上安装配置MongoDB，过程还是比较简单的"
 modified: 2015-08-08
 share: false
+comments: true
 tags: [MongoDB]
 image:
   feature: abstract-3.jpg
