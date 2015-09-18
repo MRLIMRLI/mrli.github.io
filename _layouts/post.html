@@ -49,7 +49,29 @@
         {% if page.share != false %}{% include social-share.html %}{% endif %}
       </footer>
     </div><!-- /.entry-content -->
-    {% if page.comments != false %}<section id="disqus_thread"></section><!-- /#disqus_thread -->{% endif %}
+    <!-- {% if page.comments != false %}<section id="disqus_thread"></section>{% endif %} -->
+
+    {% if page.comments != false %}
+    <section id="disqus_thread">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="{{ page.title }}" data-title="{{ page.title }}" data-url="{{ site.url }}{{ page.url }}"></div>
+    </section>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"mrlimrli"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+    {% endif %}
+
     {% if site.related_posts.size > 0 %}{% include read-more.html %}{% endif %}
   </article>
 </div><!-- /#main -->
