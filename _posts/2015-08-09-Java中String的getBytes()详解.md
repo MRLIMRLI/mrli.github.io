@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java中getBytes()详解
-description: "Java中getBytes()详解"
+description: "在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如......"
 modified: 2015-08-09
 share: false
 comments: true
@@ -13,7 +13,7 @@ image:
 在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！ 
 String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如 
 
-{% highlight html %}
+{% highlight java %}
 [] b_gbk = "中".getBytes("GBK"); 
 byte[] b_utf8 = "中".getBytes("UTF-8"); 
 byte[] b_iso88591 = "中".getBytes("ISO8859-1"); 
@@ -23,7 +23,7 @@ byte[] b_iso88591 = "中".getBytes("ISO8859-1");
 
 而与getBytes相对的，可以通过new String(byte[], decode)的方式来还原这个“中”字时，这个new String(byte[], decode)实际是使用decode指定的编码来将byte[]解析成字符串。
  
-{% highlight html %}
+{% highlight java %}
 String s_gbk = new String(b_gbk,"GBK"); 
 String s_utf8 = new String(b_utf8,"UTF-8"); 
 String s_iso88591 = new String(b_iso88591,"ISO8859-1");
@@ -35,12 +35,12 @@ String s_iso88591 = new String(b_iso88591,"ISO8859-1");
 
 有时候，为了让中文字符适应某些特殊要求（如http header头要求其内容必须为iso8859-1编码），可能会通过将中文字符按照字节方式来编码的情况，如 
 
-{% highlight html %}
+{% highlight java %}
 String s_iso88591 = new String("中".getBytes("UTF-8"),"ISO8859-1")
 {% endhighlight %}
 
 这样得到的s_iso8859-1字符串实际是三个在 ISO8859-1中的字符，在将这些字符传递到目的地后，目的地程序再通过相反的方式
-{% highlight html %}
+{% highlight java %}
 String s_utf8 = new String(s_iso88591.getBytes("ISO8859-1"),"UTF-8")
 {% endhighlight %}
 来得到正确的中文汉字“中”。这样就既保证了遵守协议规定、也支持中文。

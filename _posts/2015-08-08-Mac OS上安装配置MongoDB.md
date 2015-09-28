@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Mac OS上安装配置MongoDB
-description: "在Mac OS上安装配置MongoDB，过程还是比较简单的"
+description: "之前没事的时候玩了玩MongoDB，最近换了系统，于是在Mac下又配置了一遍，在Mac OS上安装mongoDB实际上很简单，官网上有详细的步骤照着做就好了。下面说一说我的步骤以及配置方式。我的Mac OS的版本是10.9.5，使用的工具有终端、emacs 1、去MongoDB官网(http://www.mongodb.org/downloads)mongoDB包......"
 modified: 2015-08-08
 share: false
 comments: true

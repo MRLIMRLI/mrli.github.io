@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java调用Redis
-description: "在Java中调用Redis详解"
+description: "Jedis是Redis的java客户端。我们可以在java编程中使用它来编写java代码访问Redis服务。下载并导入Jedis.jar到项目里即可使用。Jedis下载地址：https://github.com/xetorthio/jedis/downloads](https://github.com/xetorthio/jedis/downloads)......"
 modified: 2015-08-11
 share: false
 comments: true
@@ -20,7 +20,7 @@ Jedis是Redis的java客户端。我们可以在java编程中使用它来编写ja
 
 ###二、编写代码进行测试
 
-{% highlight html %}
+{% highlight java %}
 package com.jedis.test;
 import redis.clients.jedis.Jedis;
 /**
