@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mr.li&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://mrli.me/"/>
+  <updated>2016-02-14T08:33:37.000Z</updated>
+  <id>http://mrli.me/</id>
+  
+  <author>
+    <name>Mr.li</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java中getBytes()详解</title>
+    <link href="http://mrli.me/2015/08/09/Java%E4%B8%ADString%E7%9A%84getBytes()%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://mrli.me/2015/08/09/Java中String的getBytes()详解/</id>
+    <published>2015-08-08T16:00:00.000Z</published>
+    <updated>2016-02-14T08:33:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！&lt;br&gt;String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如 &lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[] b_gbk = &lt;span class=&quot;string&quot;&gt;&quot;中&quot;&lt;/span&gt;.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;GBK&quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;[] b_utf8 = &lt;span class=&quot;string&quot;&gt;&quot;中&quot;&lt;/span&gt;.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;[] b_iso88591 = &lt;span class=&quot;string&quot;&gt;&quot;中&quot;&lt;/span&gt;.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;ISO8859-1&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将分别返回“中”这个汉字在GBK、UTF-8和ISO8859-1编码下的byte数组表示，此时b_gbk的长度为2，b_utf8的长度为3，b_iso88591的长度为1。 &lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;而与getBytes相对的，可以通过new String(byte[], decode)的方式来还原这个“中”字时，这个new String(byte[], decode)实际是使用decode指定的编码来将byte[]解析成字符串。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;String s_gbk = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; String(b_gbk,&lt;span class=&quot;string&quot;&gt;&quot;GBK&quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String s_utf8 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; String(b_utf8,&lt;span class=&quot;string&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;String s_iso88591 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; String(b_iso88591,&lt;span class=&quot;string&quot;&gt;&quot;ISO8859-1&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;通过打印s_gbk、s_utf8和s_iso88591，会发现，s_gbk和s_utf8都是“中”，而只有s_iso88591是一个不认识的字符，为什么使用ISO8859-1编码再组合之后，无法还原“中”字呢，其实原因很简单，因为ISO8859-1编码的编码表中，根本就没有包含汉字字符，当然也就无法通过”中”.getBytes(“ISO8859-1”);来得到正确的“中”字在ISO8859-1中的编码值了，所以再通过new String()来还原就无从谈起了。 &lt;/p&gt;
+&lt;p&gt;因此，通过String.getBytes(String decode)方法来得到byte[]时，一定要确定decode的编码表中确实存在String表示的码值，这样得到的byte[]数组才能正确被还原。 &lt;/p&gt;
+&lt;p&gt;有时候，为了让中文字符适应某些特殊要求（如http header头要求其内容必须为iso8859-1编码），可能会通过将中文字符按照字节方式来编码的情况，如 &lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;String s_iso88591 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; String(&lt;span class=&quot;string&quot;&gt;&quot;中&quot;&lt;/span&gt;.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;),&lt;span class=&quot;string&quot;&gt;&quot;ISO8859-1&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这样得到的s_iso8859-1字符串实际是三个在 ISO8859-1中的字符，在将这些字符传递到目的地后，目的地程序再通过相反的方式&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;String s_utf8 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; String(s_iso88591.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;ISO8859-1&quot;&lt;/span&gt;),&lt;span class=&quot;string&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;来得到正确的中文汉字“中”。这样就既保证了遵守协议规定、也支持中文。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！&lt;br&gt;String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如 &lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;[] b_gbk = &lt;span class=&quot;string&quot;&gt;&quot;中&quot;&lt;/span&gt;.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;GBK&quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;[] b_utf8 = &lt;span class=&quot;string&quot;&gt;&quot;中&quot;&lt;/span&gt;.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;byte&lt;/span&gt;[] b_iso88591 = &lt;span class=&quot;string&quot;&gt;&quot;中&quot;&lt;/span&gt;.getBytes(&lt;span class=&quot;string&quot;&gt;&quot;ISO8859-1&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将分别返回“中”这个汉字在GBK、UTF-8和ISO8859-1编码下的byte数组表示，此时b_gbk的长度为2，b_utf8的长度为3，b_iso88591的长度为1。 &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="http://mrli.me/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac OS上安装配置MongoDB</title>
+    <link href="http://mrli.me/2015/08/08/Mac%20OS%E4%B8%8A%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMongoDB/"/>
+    <id>http://mrli.me/2015/08/08/Mac OS上安装配置MongoDB/</id>
+    <published>2015-08-07T16:00:00.000Z</published>
+    <updated>2016-02-14T08:34:12.000Z</updated>
+    
+    <content type="html">&lt;p&gt;之前没事的时候玩了玩MongoDB，最近换了系统，于是在Mac下又配置了一遍 &lt;br&gt;&lt;br&gt;在Mac OS上安装mongoDB实际上很简单，官网上有详细的步骤照着做就好了。下面说一说我的步骤以及配置方式。 &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;我的Mac OS的版本是10.9.5，使用的工具有终端、emacs &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;1、去MongoDB官网&lt;a href=&quot;http://www.mongodb.org/downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;下载&lt;/a&gt;mongoDB包 &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;2、下载之后解压缩到任意一个目录下解压缩后可以发现有一个“bin”目录，这个目录放置mongoDB的命令的目录&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3、使用命令“mkdir -p /data/db”，在“/”下创建data/db目录，这个是放置mongoDB数据的目录，我试了不创建这个目录就启动mongoDB，结果报“exception in initAndListen: 10296 dbpath (/data/db/) does not exist, terminating”，这个目录不仅是必须的而且不会自动创建，不知道能不能换个目录放置数据 &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;4、进入”bin”目录，使用命令“./mongod”启动mongoDB server，启动后注意不要关闭终端 &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;5、另外打开一个终端窗口，同样为了方便起见，进入”bin”目录，运行命令”./mongo”，这时可以看到mongoDB的控制台在终端上出现了，这时就可以使用任意mongoDB的命令操作mongoDB数据了，就和使用mysql命令行操作mysql一样  &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;6、为了方便起见，把mongoDB的bin目录加入到环境变量中，具体的方法是编辑”~”下的.bash_profile文件（如果没有找到，则自己创建一个）&lt;br&gt;&lt;br&gt;PATH=”/../mongodb/bin: …” &lt;br&gt;&lt;br&gt;export PATH &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;之前没事的时候玩了玩MongoDB，最近换了系统，于是在Mac下又配置了一遍 &lt;br&gt;&lt;br&gt;在Mac OS上安装mongoDB实际上很简单，官网上有详细的步骤照着做就好了。下面说一说我的步骤以及配置方式。 &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;我的Mac OS的版本是10.9.5，使用的工具有终端、emacs &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;1、去MongoDB官网&lt;a href=&quot;http://www.mongodb.org/downloads&quot;&gt;下载&lt;/a&gt;mongoDB包 &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;2、下载之后解压缩到任意一个目录下解压缩后可以发现有一个“bin”目录，这个目录放置mongoDB的命令的目录&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="MongoDB" scheme="http://mrli.me/tags/MongoDB/"/>
+    
+      <category term="数据库" scheme="http://mrli.me/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+</feed>
