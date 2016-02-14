@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Mr.li&#39;s Blog</title>
+  <title>Hello World | Mr.li&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mr.li's Blog">
-<meta property="og:url" content="http://mrli.me/index.html">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://mrli.me/2016/02/14/hello-world/index.html">
 <meta property="og:site_name" content="Mr.li's Blog">
-<meta property="og:description">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
+<meta property="og:updated_time" content="2016-02-14T04:38:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr.li's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
   
     <link rel="alternative" href="/atom.xml" title="Mr.li&#39;s Blog" type="application/atom+xml">
   
@@ -190,9 +194,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/02/14/hello-world/" class="article-date">
@@ -208,12 +210,19 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/14/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      Hello World
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -231,160 +240,68 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/09/2015-08-09-Java中String的getBytes()详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java中getBytes()详解</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-
-
-  
-    <article id="post-2015-08-09-Java中String的getBytes()详解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/09/2015-08-09-Java中String的getBytes()详解/" class="article-date">
-  	<time datetime="2015-08-08T16:00:00.000Z" itemprop="datePublished">2015-08-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/09/2015-08-09-Java中String的getBytes()详解/">Java中getBytes()详解</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！<br>String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[] b_gbk = <span class="string">"中"</span>.getBytes(<span class="string">"GBK"</span>); </span><br><span class="line"><span class="keyword">byte</span>[] b_utf8 = <span class="string">"中"</span>.getBytes(<span class="string">"UTF-8"</span>); </span><br><span class="line"><span class="keyword">byte</span>[] b_iso88591 = <span class="string">"中"</span>.getBytes(<span class="string">"ISO8859-1"</span>);</span><br></pre></td></tr></table></figure>
-<p>将分别返回“中”这个汉字在GBK、UTF-8和ISO8859-1编码下的byte数组表示，此时b_gbk的长度为2，b_utf8的长度为3，b_iso88591的长度为1。 </p>
-<p>而与getBytes相对的，可以通过new String(byte[], decode)的方式来还原这个“中”字时，这个new String(byte[], decode)实际是使用decode指定的编码来将byte[]解析成字符串。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String s_gbk = <span class="keyword">new</span> String(b_gbk,<span class="string">"GBK"</span>); </span><br><span class="line">String s_utf8 = <span class="keyword">new</span> String(b_utf8,<span class="string">"UTF-8"</span>); </span><br><span class="line">String s_iso88591 = <span class="keyword">new</span> String(b_iso88591,<span class="string">"ISO8859-1"</span>);</span><br></pre></td></tr></table></figure>
-<p>通过打印s_gbk、s_utf8和s_iso88591，会发现，s_gbk和s_utf8都是“中”，而只有s_iso88591是一个不认识的字符，为什么使用ISO8859-1编码再组合之后，无法还原“中”字呢，其实原因很简单，因为ISO8859-1编码的编码表中，根本就没有包含汉字字符，当然也就无法通过”中”.getBytes(“ISO8859-1”);来得到正确的“中”字在ISO8859-1中的编码值了，所以再通过new String()来还原就无从谈起了。 </p>
-<p>因此，通过String.getBytes(String decode)方法来得到byte[]时，一定要确定decode的编码表中确实存在String表示的码值，这样得到的byte[]数组才能正确被还原。 </p>
-<p>有时候，为了让中文字符适应某些特殊要求（如http header头要求其内容必须为iso8859-1编码），可能会通过将中文字符按照字节方式来编码的情况，如 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s_iso88591 = <span class="keyword">new</span> String(<span class="string">"中"</span>.getBytes(<span class="string">"UTF-8"</span>),<span class="string">"ISO8859-1"</span>)</span><br></pre></td></tr></table></figure>
-<p>这样得到的s_iso8859-1字符串实际是三个在 ISO8859-1中的字符，在将这些字符传递到目的地后，目的地程序再通过相反的方式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s_utf8 = <span class="keyword">new</span> String(s_iso88591.getBytes(<span class="string">"ISO8859-1"</span>),<span class="string">"UTF-8"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>来得到正确的中文汉字“中”。这样就既保证了遵守协议规定、也支持中文。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
 
-
-
-
-  
-    <article id="post-2015-08-08-Mac OS上安装配置MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/08/2015-08-08-Mac OS上安装配置MongoDB/" class="article-date">
-  	<time datetime="2015-08-07T16:00:00.000Z" itemprop="datePublished">2015-08-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/08/2015-08-08-Mac OS上安装配置MongoDB/">Mac OS上安装配置MongoDB</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前没事的时候玩了玩MongoDB，最近换了系统，于是在Mac下又配置了一遍 <br><br>在Mac OS上安装mongoDB实际上很简单，官网上有详细的步骤照着做就好了。下面说一说我的步骤以及配置方式。 <br></p>
-<p>我的Mac OS的版本是10.9.5，使用的工具有终端、emacs <br></p>
-<p>1、去MongoDB官网<a href="http://www.mongodb.org/downloads" target="_blank" rel="external">下载</a>mongoDB包 <br></p>
-<p>2、下载之后解压缩到任意一个目录下解压缩后可以发现有一个“bin”目录，这个目录放置mongoDB的命令的目录</p>
-<p>3、使用命令“mkdir -p /data/db”，在“/”下创建data/db目录，这个是放置mongoDB数据的目录，我试了不创建这个目录就启动mongoDB，结果报“exception in initAndListen: 10296 dbpath (/data/db/) does not exist, terminating”，这个目录不仅是必须的而且不会自动创建，不知道能不能换个目录放置数据 <br></p>
-<p>4、进入”bin”目录，使用命令“./mongod”启动mongoDB server，启动后注意不要关闭终端 <br></p>
-<p>5、另外打开一个终端窗口，同样为了方便起见，进入”bin”目录，运行命令”./mongo”，这时可以看到mongoDB的控制台在终端上出现了，这时就可以使用任意mongoDB的命令操作mongoDB数据了，就和使用mysql命令行操作mysql一样  <br></p>
-<p>6、为了方便起见，把mongoDB的bin目录加入到环境变量中，具体的方法是编辑”~”下的.bash_profile文件（如果没有找到，则自己创建一个）<br><br>PATH=”/../mongodb/bin: …” <br><br>export PATH </p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://mrli.me/2016/02/14/hello-world/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -408,8 +325,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

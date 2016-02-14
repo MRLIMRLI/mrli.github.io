@@ -4,17 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Mr.li&#39;s Blog</title>
+  <title>Java中getBytes()详解 | Mr.li&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mr.li's Blog">
-<meta property="og:url" content="http://mrli.me/index.html">
+  <meta name="description" content="在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如 
+123[] b_gbk = &quot;中&quot;.getBytes(&quot;GBK&quot;); byte[] b_utf8 = &quot;中&quot;.getByte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中getBytes()详解">
+<meta property="og:url" content="http://mrli.me/2015/08/09/2015-08-09-Java中String的getBytes()详解/index.html">
 <meta property="og:site_name" content="Mr.li's Blog">
-<meta property="og:description">
+<meta property="og:description" content="在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如 
+123[] b_gbk = &quot;中&quot;.getBytes(&quot;GBK&quot;); byte[] b_utf8 = &quot;中&quot;.getByte">
+<meta property="og:updated_time" content="2016-02-14T06:06:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr.li's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Java中getBytes()详解">
+<meta name="twitter:description" content="在Java中，String的getBytes()方法是得到一个操作系统默认的编码格式的字节数组。这个表示在不通OS下，返回的东西不一样！String.getBytes(String decode)方法会根据指定的decode编码返回某字符串在该编码下的byte数组表示，如 
+123[] b_gbk = &quot;中&quot;.getBytes(&quot;GBK&quot;); byte[] b_utf8 = &quot;中&quot;.getByte">
   
     <link rel="alternative" href="/atom.xml" title="Mr.li&#39;s Blog" type="application/atom+xml">
   
@@ -190,70 +194,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/02/14/hello-world/" class="article-date">
-  	<time datetime="2016-02-14T04:38:35.000Z" itemprop="datePublished">2016-02-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2015-08-09-Java中String的getBytes()详解" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-2015-08-09-Java中String的getBytes()详解" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/08/09/2015-08-09-Java中String的getBytes()详解/" class="article-date">
@@ -269,12 +210,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/09/2015-08-09-Java中String的getBytes()详解/">Java中getBytes()详解</a>
+    <h1 class="article-title" itemprop="name">
+      Java中getBytes()详解
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -294,97 +246,77 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2015-08-08-Mac OS上安装配置MongoDB" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/08/2015-08-08-Mac OS上安装配置MongoDB/" class="article-date">
-  	<time datetime="2015-08-07T16:00:00.000Z" itemprop="datePublished">2015-08-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2016/02/14/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
         
+          Hello World
+        
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/08/2015-08-08-Mac OS上安装配置MongoDB/">Mac OS上安装配置MongoDB</a>
-    </h1>
   
+    <a href="/2015/08/08/2015-08-08-Mac OS上安装配置MongoDB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac OS上安装配置MongoDB</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前没事的时候玩了玩MongoDB，最近换了系统，于是在Mac下又配置了一遍 <br><br>在Mac OS上安装mongoDB实际上很简单，官网上有详细的步骤照着做就好了。下面说一说我的步骤以及配置方式。 <br></p>
-<p>我的Mac OS的版本是10.9.5，使用的工具有终端、emacs <br></p>
-<p>1、去MongoDB官网<a href="http://www.mongodb.org/downloads" target="_blank" rel="external">下载</a>mongoDB包 <br></p>
-<p>2、下载之后解压缩到任意一个目录下解压缩后可以发现有一个“bin”目录，这个目录放置mongoDB的命令的目录</p>
-<p>3、使用命令“mkdir -p /data/db”，在“/”下创建data/db目录，这个是放置mongoDB数据的目录，我试了不创建这个目录就启动mongoDB，结果报“exception in initAndListen: 10296 dbpath (/data/db/) does not exist, terminating”，这个目录不仅是必须的而且不会自动创建，不知道能不能换个目录放置数据 <br></p>
-<p>4、进入”bin”目录，使用命令“./mongod”启动mongoDB server，启动后注意不要关闭终端 <br></p>
-<p>5、另外打开一个终端窗口，同样为了方便起见，进入”bin”目录，运行命令”./mongo”，这时可以看到mongoDB的控制台在终端上出现了，这时就可以使用任意mongoDB的命令操作mongoDB数据了，就和使用mysql命令行操作mysql一样  <br></p>
-<p>6、为了方便起见，把mongoDB的bin目录加入到环境变量中，具体的方法是编辑”~”下的.bash_profile文件（如果没有找到，则自己创建一个）<br><br>PATH=”/../mongodb/bin: …” <br><br>export PATH </p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
   
 </article>
 
 
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015-08-09-Java中String的getBytes()详解" data-title="Java中getBytes()详解" data-url="http://mrli.me/2015/08/09/2015-08-09-Java中String的getBytes()详解/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-  
-  
+
+
+
 </div>
       <footer id="footer">
   <div class="outer">
@@ -408,8 +340,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
