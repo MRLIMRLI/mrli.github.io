@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Mr.li&#39;s Blog</title>
-  
+  <subtitle>爱生活，爱代码，也爱民谣，为自己喜欢的一切努力着</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://mrli.me/"/>
